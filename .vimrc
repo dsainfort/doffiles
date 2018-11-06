@@ -12,9 +12,14 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-commentary'
+Plugin 'prettier/vim-prettier', { 'do': 'npm install' }
 Plugin 'itchyny/lightline.vim'
 Plugin 'dart-lang/dart-vim-plugin'
 Plugin 'reisub0/hot-reload.vim'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/emmet-vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mxw/vim-jsx'
 Plugin 'morhetz/gruvbox'
 " The following are examples of different formats supported.
@@ -46,6 +51,8 @@ set cursorline " Highlighting that moves
 set softtabstop=2	" Number of spaces per Tab
 set tabstop=2	" Number of spaces per Tab
 set autoindent	" Auto-indent new lines
+set smartindent
+set wrap
 set shiftwidth=2	" Number of auto-indent spaces
 set noexpandtab " Use tabs, not spaces
 set noswapfile " Disable temporary files
@@ -78,6 +85,22 @@ let dart_format_on_save=1
 "+++++++++JSx+++++++++++++++++++
 let g:jsx_ext_required=1
 let g:jsx_pragma_required =1
+"+++++++++CTRLp++++++++++++++++
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"+++++++++++GitGutter++++++++++++
+if exists('&signcolumn')  " Vim 7.4.2201
+  set signcolumn=yes
+else
+  let g:gitgutter_sign_column_always = 1
+endif
+let g:gitgutter_highlight_lines = 1
 
 " :Brief help
 " :PluginList       - lists configured plugins
